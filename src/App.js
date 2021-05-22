@@ -29,7 +29,11 @@ class Order extends Component {
       current_month_order_count: 0,
       current_month_order_amount: 0,
       last_month_order_amount: 0,
-      last_month_order_count: 0
+      last_month_order_count: 0,
+      topOrder: [],
+      bottomOrder: [],
+      topUser: [],
+      bottomUser: []
     };
   }
 
@@ -38,6 +42,10 @@ class Order extends Component {
     this.CurrentWeekData();
     this.CurrentMonthData();
     this.LastMonthData();
+    this.top5order();
+    this.bottom5order();
+    this.top5user();
+    this.bottom5user()
   };
 
   amountSum = (arr) => {
@@ -66,14 +74,10 @@ class Order extends Component {
   };
 
   getCurrentWeek() {
-    var currentDate = moment();
-
-    var weekStart = currentDate.clone().startOf("isoWeek");
-    var weekEnd = currentDate.clone().endOf("isoWeek");
-
-    var days = [];
-
-    for (var i = 0; i <= 6; i++) {
+    let currentDate = moment();
+    let weekStart = currentDate.clone().startOf("isoWeek");
+    let days = [];
+    for (let i = 0; i <= 6; i++) {
       days.push(moment(weekStart).add(i, "days").format("YYYY-MM-DD"));
     }
     return days;
@@ -120,7 +124,7 @@ class Order extends Component {
 
   LastMonthData = () => {
     let filter_data = [];
-    let last_month = moment().subtract(1, 'months').endOf('month').format('MM');
+    let last_month = moment().subtract(1, "months").endOf("month").format("MM");
     if (JSONDATA) {
       for (let i = 0; i < JSONDATA.length; i++) {
         if (moment(JSONDATA[i].date).format("MM") === last_month) {
@@ -134,6 +138,42 @@ class Order extends Component {
       }
     }
   };
+
+  top5order = () => {
+    if (JSONDATA) {
+      let data = JSONDATA.sort((a,b) => b.amount - a.amount)
+      this.setState({
+        topOrder: data.slice(0,5)
+      })
+    }
+  };
+
+  bottom5order = () => {
+    if(JSONDATA){
+      let data = JSONDATA.sort((a,b) => a.amount - b.amount)
+      this.setState({
+        bottomOrder: data.slice(0,5)
+      })
+    }
+  }
+
+  top5user = () => {
+    if (JSONDATA) {
+      let data = JSONDATA.sort((a,b) => b.quantity - a.quantity)
+      this.setState({
+        topUser: data.slice(0,5)
+      })
+    }
+  };
+
+  bottom5user = () => {
+    if(JSONDATA){
+      let data = JSONDATA.sort((a,b) => a.quantity - b.quantity)
+      this.setState({
+        bottomUser: data.slice(0,5)
+      })
+    }
+  }
 
   render() {
     return (
@@ -206,19 +246,19 @@ class Order extends Component {
         </div>
         <div>
           <p>Top 5 Orders</p>
-          <TopOrder />
+          <TopOrder order = {this.state.topOrder}/>
         </div>
         <div>
           <p>Bottom 5 Orders</p>
-          <BottomOrder />
+          <BottomOrder order = {this.state.bottomOrder}/>
         </div>
         <div>
           <p>Top 5 User</p>
-          <TopUser />
+          <TopUser order = {this.state.topUser}/>
         </div>
         <div>
           <p>Bottom 5 User</p>
-          <BottomUser />
+          <BottomUser order={this.state.bottomUser}/>
         </div>
       </Container>
     );
