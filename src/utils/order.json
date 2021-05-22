@@ -1,0 +1,163 @@
+[
+    {   
+        "id": 1,
+        "username": "john",
+        "amount": 5000,
+        "date": "2021-05-01T18:25:43.511Z",
+        "city": "gurgaon"
+    },
+    {   
+        "id": 2,
+        "username": "nina",
+        "amount": 2500,
+        "date": "2021-05-02T18:25:43.511Z",
+        "city": "gurgaon"
+    },
+    {
+        "id": 3,
+        "username": "hello",
+        "amount": 9300,
+        "date": "2021-05-03T18:25:43.511Z",
+        "city": "noida"
+    },
+    {   
+        "id": 4,
+        "username": "world",
+        "amount": 1000,
+        "date": "2021-05-03T18:25:43.511Z",
+        "city": "noida"
+    },
+    {   
+        "id": 5,
+        "username": "abhishek",
+        "amount": 500,
+        "date": "2021-05-04T18:25:43.511Z",
+        "city": "kota"
+    },
+    {   
+        "id": 6,
+        "username": "divya",
+        "amount": 2000,
+        "date": "2021-05-05T18:25:43.511Z",
+        "city": "kota"
+    },
+    {   
+        "id": 7,
+        "username": "luvy",
+        "amount": 4500,
+        "date": "2021-05-06T18:25:43.511Z",
+        "city": "gurgaon"
+    },
+    {   
+        "id": 8,
+        "username": "anuroop",
+        "amount": 5500,
+        "date": "2021-05-07T18:25:43.511Z",
+        "city": "kota"
+    },
+    {   
+        "id": 9,
+        "username": "vishal",
+        "amount": 7500,
+        "date": "2021-04-28T18:25:43.511Z",
+        "city": "noida"
+    },
+    {   
+        "id": 10,
+        "username": "mani",
+        "amount": 9500,
+        "date": "2021-04-20T18:25:43.511Z",
+        "city": "jaipur"
+    },
+    {   
+        "id": 11,
+        "username": "Charles",
+        "amount": 5000,
+        "date": "2021-04-01T18:25:43.511Z",
+        "city": "jaipur"
+    },
+    {   
+        "id": 12,
+        "username": "joseph",
+        "amount": 2800,
+        "date": "2021-04-02T18:25:43.511Z",
+        "city": "gurgaon"
+    },
+    {
+        "id": 13,
+        "username": "Thomas",
+        "amount": 10000,
+        "date": "2021-04-03T18:25:43.511Z",
+        "city": "Delhi"
+    },
+    {   
+        "id": 14,
+        "username": "Chris",
+        "amount": 4500,
+        "date": "2021-04-03T18:25:43.511Z",
+        "city": "noida"
+    },
+    {   
+        "id": 15,
+        "username": "Daniel",
+        "amount": 5000,
+        "date": "2021-04-04T18:25:43.511Z",
+        "city": "kota"
+    },
+    {   
+        "id": 16,
+        "username": "Paul",
+        "amount": 3500,
+        "date": "2021-04-05T18:25:43.511Z",
+        "city": "Delhi"
+    },
+    {   
+        "id": 17,
+        "username": "Mark",
+        "amount": 5500,
+        "date": "2021-04-06T18:25:43.511Z",
+        "city": "gurgaon"
+    },
+    {   
+        "id": 18,
+        "username": "Donald",
+        "amount": 2500,
+        "date": "2021-04-07T18:25:43.511Z",
+        "city": "kota"
+    },
+    {   
+        "id": 19,
+        "username": "George",
+        "amount": 7500,
+        "date": "2021-04-28T18:25:43.511Z",
+        "city": "noida"
+    },
+    {   
+        "id": 20,
+        "username": "Kenneth",
+        "amount": 7500,
+        "date": "2021-04-20T18:25:43.511Z",
+        "city": "jaipur"
+    },
+    {   
+        "id": 21,
+        "username": "richard",
+        "amount": 8500,
+        "date": "2021-05-22T18:25:43.511Z",
+        "city": "jaipur"
+    },
+    {   
+        "id": 22,
+        "username": "hendricks",
+        "amount": 10000,
+        "date": "2021-05-22T18:25:43.511Z",
+        "city": "noida"
+    },
+    {   
+        "id": 23,
+        "username": "gilfoye",
+        "amount": 10000,
+        "date": "2021-05-18T18:25:43.511Z",
+        "city": "kota"
+    }
+]
