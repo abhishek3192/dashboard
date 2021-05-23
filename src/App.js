@@ -3,15 +3,13 @@ import JSONDATA from "./utils/order.json";
 import "./utils/style.css";
 import Box from "@material-ui/core/Box";
 import { Container } from "@material-ui/core";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
 import OrderTrendChart from "./Components/LineChart";
 
 import TopOrder from "./Components/OrderTable/Top5order";
 import BottomOrder from "./Components/OrderTable/Bottom5order";
 import TopUser from "./Components/UserTable/Top5user";
 import BottomUser from "./Components/UserTable/Bottom5user";
+import DetailedOrder from "./Components/DetailedOrderReport";
 
 import moment from "moment";
 
@@ -33,7 +31,9 @@ class Order extends Component {
       topOrder: [],
       bottomOrder: [],
       topUser: [],
-      bottomUser: []
+      bottomUser: [],
+      filtered_data: [],
+      selected_city: ""
     };
   }
 
@@ -45,7 +45,7 @@ class Order extends Component {
     this.top5order();
     this.bottom5order();
     this.top5user();
-    this.bottom5user()
+    this.bottom5user();
   };
 
   amountSum = (arr) => {
@@ -96,6 +96,7 @@ class Order extends Component {
             filter_data.push(JSONDATA[i]);
             let amount_sum = this.amountSum(filter_data);
             this.setState({
+              filtered_data: filter_data,
               current_week_order_count: filter_data.length,
               current_week_order_amount: amount_sum,
             });
@@ -141,60 +142,44 @@ class Order extends Component {
 
   top5order = () => {
     if (JSONDATA) {
-      let data = JSONDATA.sort((a,b) => b.amount - a.amount)
+      let data = JSONDATA.sort((a, b) => b.amount - a.amount);
       this.setState({
-        topOrder: data.slice(0,5)
-      })
+        topOrder: data.slice(0, 5),
+      });
     }
   };
 
   bottom5order = () => {
-    if(JSONDATA){
-      let data = JSONDATA.sort((a,b) => a.amount - b.amount)
+    if (JSONDATA) {
+      let data = JSONDATA.sort((a, b) => a.amount - b.amount);
       this.setState({
-        bottomOrder: data.slice(0,5)
-      })
+        bottomOrder: data.slice(0, 5),
+      });
     }
-  }
+  };
 
   top5user = () => {
     if (JSONDATA) {
-      let data = JSONDATA.sort((a,b) => b.quantity - a.quantity)
+      let data = JSONDATA.sort((a, b) => b.quantity - a.quantity);
       this.setState({
-        topUser: data.slice(0,5)
-      })
+        topUser: data.slice(0, 5),
+      });
     }
   };
 
   bottom5user = () => {
-    if(JSONDATA){
-      let data = JSONDATA.sort((a,b) => a.quantity - b.quantity)
+    if (JSONDATA) {
+      let data = JSONDATA.sort((a, b) => a.quantity - b.quantity);
       this.setState({
-        bottomUser: data.slice(0,5)
-      })
+        bottomUser: data.slice(0, 5),
+      });
     }
-  }
+  };
 
   render() {
     return (
       <Container maxWidth="lg" style={{ marginTop: "50px" }}>
-        <FormControl variant="outlined">
-          <InputLabel htmlFor="outlined-age-native-simple">Age</InputLabel>
-          <Select
-            native
-            value={this.state.age}
-            label="Age"
-            inputProps={{
-              name: "age",
-              id: "outlined-age-native-simple",
-            }}
-          >
-            <option aria-label="None" value="" />
-            <option value={10}>Ten</option>
-            <option value={20}>Twenty</option>
-            <option value={30}>Thirty</option>
-          </Select>
-        </FormControl>
+        <div style={{display: "flex", justifyContent: "center", padding: "20px"}}><h1>Dashboard</h1></div>
         <Box
           display="flex"
           p={1}
@@ -242,23 +227,27 @@ class Order extends Component {
           </Box>
         </Box>
         <div>
-          <OrderTrendChart />
+          <OrderTrendChart order={this.state.filtered_data} />
         </div>
         <div>
           <p>Top 5 Orders</p>
-          <TopOrder order = {this.state.topOrder}/>
+          <TopOrder order={this.state.topOrder} />
         </div>
         <div>
           <p>Bottom 5 Orders</p>
-          <BottomOrder order = {this.state.bottomOrder}/>
+          <BottomOrder order={this.state.bottomOrder} />
         </div>
         <div>
           <p>Top 5 User</p>
-          <TopUser order = {this.state.topUser}/>
+          <TopUser order={this.state.topUser} />
         </div>
         <div>
           <p>Bottom 5 User</p>
-          <BottomUser order={this.state.bottomUser}/>
+          <BottomUser order={this.state.bottomUser} />
+        </div>
+        <div>
+          <p>Detailed Report</p>
+          <DetailedOrder order={JSONDATA} />
         </div>
       </Container>
     );
